@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authentication',
+    'rest_auth'
     'accounts',
     'posts',
+    'comments',
+    'likes',
 ]
 
 MIDDLEWARE = [
@@ -123,7 +127,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'accounts.Account'
+
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES' : ('rest_framework.permissions.IsAAuthenticated',),
 #     'DEFAULT_AUTHENTICATION_CLASSES' : ('rest_framework_simplejwt.authentication.JWTAuthentication',)
 # }
+
+REST_AUTH_SERIALIZERS = {
+'USER_DETAILS_SERIALIZER': 'accounts.api.serializers.AccountSerializer',
+}
